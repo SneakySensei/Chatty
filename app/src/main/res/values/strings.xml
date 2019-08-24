@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Chatty</string>
+    <string name="auth_text">Login to Chatty</string>
+    <string name="auth_button_login">Login</string>
+    <string name="auth_button_sign_up">Sign Up</string>
+    <string name="auth_hint_name">Name</string>
+    <string name="auth_hint_email">Email</string>
+    <string name="auth_hint_password">Password</string>
+    <string name="error_weak_password">Enter your password</string>
+
+    <string name="auth_method_switcher">Already have an account? Log In</string>
+
+</resources>
