@@ -80,7 +80,7 @@ class AuthActivity : AppCompatActivity() {
             val name = editText3.text.toString()
             val email = editText.text.toString()
             val password = editText2.text.toString()
-            viewmodel.signUp(name, email,password)
+            viewmodel.signUp(name, email, password)
         }
 
         textView2.setOnClickListener{
