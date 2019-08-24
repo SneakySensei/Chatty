@@ -46,6 +46,7 @@ class AuthActivity : AppCompatActivity() {
                 updateUI(it)
             }
         })
+
     }
 
 
@@ -59,6 +60,7 @@ class AuthActivity : AppCompatActivity() {
 
     fun showLogin(){
         editText3.visibility = View.GONE
+        imageView4.visibility = View.GONE
         button.text = getString(R.string.auth_button_login)
         textView2.text = "Don't have an account? Sign Up"
         textView.text = "Login to Chatty!"
@@ -75,6 +77,7 @@ class AuthActivity : AppCompatActivity() {
 
     fun showSignup(){
         editText3.visibility = View.VISIBLE
+        imageView4.visibility = View.VISIBLE
         button.text = getString(R.string.auth_button_sign_up)
         textView2.text = "Already have an account? Login Instead"
         textView.text = "Sign Up to Chatty!"
