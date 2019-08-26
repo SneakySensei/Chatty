@@ -5,7 +5,8 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".AuthActivity" android:animateLayoutChanges="true">
+        tools:context=".AuthActivity" android:animateLayoutChanges="true"
+>
 
     <ImageView
             android:layout_width="100dp"
@@ -26,71 +27,70 @@
             android:textSize="18sp" android:layout_marginTop="32dp" android:fontFamily="sans-serif"
             android:textAlignment="center"/>
     <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/editText" app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:hint="@string/auth_hint_email" android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/editText3" android:fontFamily="sans-serif"
-    />
+            android:background="@drawable/edit_text_border" android:paddingStart="10dp"
+            android:drawableEnd="@drawable/ic_envelope" android:paddingEnd="10dp"/>
     <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:inputType="textPassword"
             android:ems="10"
             android:id="@+id/editText2"
-            app:layout_constraintTop_toBottomOf="@+id/editText"
             android:hint="@string/auth_hint_password"
-            android:layout_marginTop="32dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="sans-serif"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="sans-serif" android:drawableEnd="@drawable/ic_key"
+            android:background="@drawable/edit_text_border" android:paddingStart="10dp" android:paddingEnd="10dp"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/editText"/>
     <Button
             android:text="@string/auth_button_login"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
+            android:layout_width="310dp"
+            android:layout_height="40dp"
             android:id="@+id/button"
-            app:layout_constraintStart_toStartOf="@+id/editText2"
             android:backgroundTint="#9753FF"
-            android:layout_marginBottom="80dp" app:layout_constraintBottom_toTopOf="@+id/textView2"
             android:textColor="@android:color/primary_text_dark"
-            app:layout_constraintEnd_toEndOf="@+id/editText2"
-            app:layout_constraintHorizontal_bias="0.0" android:fontFamily="sans-serif-medium"/>
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/button_background" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.564" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/guideline"/>
     <EditText
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
             android:inputType="textPersonName"
             android:ems="10"
             android:id="@+id/editText3" android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/textView" android:hint="@string/auth_hint_name"
-            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginEnd="24dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="24dp"
             app:layout_constraintStart_toStartOf="parent" android:visibility="visible"
-            android:fontFamily="sans-serif"/>
+            android:fontFamily="sans-serif" android:paddingStart="10dp" android:paddingEnd="10dp"
+            android:background="@drawable/edit_text_border" android:drawableEnd="@drawable/ic_avatar"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView2" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-            android:layout_marginBottom="128dp" app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/auth_method_switcher" android:textColor="@color/colorPrimaryDark"
-            android:textSize="18sp" android:fontFamily="sans-serif" android:textAlignment="center"/>
-    <ImageView
+            android:textSize="18sp" android:fontFamily="sans-serif" android:textAlignment="center"
+            android:layout_marginTop="32dp" app:layout_constraintTop_toBottomOf="@+id/button"/>
+    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:id="@+id/guideline"
+                                                android:orientation="horizontal"
+                                                app:layout_constraintGuide_percent="0.66"/>
+    <TextView
+            android:text="Invalid Credentials"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_envelope"
-            android:id="@+id/imageView2"
-            app:layout_constraintEnd_toStartOf="@+id/editText"
-            app:layout_constraintBottom_toBottomOf="@+id/editText" app:layout_constraintTop_toTopOf="@+id/editText"/>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_key"
-            android:id="@+id/imageView3" app:layout_constraintEnd_toStartOf="@+id/editText2"
-            app:layout_constraintTop_toTopOf="@+id/editText2" app:layout_constraintBottom_toBottomOf="@+id/editText2"/>
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" app:srcCompat="@drawable/ic_avatar"
-            android:id="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="@+id/editText3" app:layout_constraintBottom_toBottomOf="@+id/editText3"
-            app:layout_constraintEnd_toStartOf="@+id/editText3"
-    />
+            android:layout_height="wrap_content"
+            android:id="@+id/textView9" app:layout_constraintBottom_toTopOf="@+id/button" android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp" android:layout_marginBottom="32dp" android:textSize="18sp"
+            android:textColor="#C83C3C" android:visibility="invisible"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

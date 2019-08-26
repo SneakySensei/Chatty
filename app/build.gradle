@@ -36,7 +36,6 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.google.firebase:firebase-auth' //FOR MAUTH
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
     implementation 'com.google.firebase:firebase-database' //FOR LIVE DATABSE
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version" //FOR VIEWMODEL
     testImplementation 'junit:junit:4.12'

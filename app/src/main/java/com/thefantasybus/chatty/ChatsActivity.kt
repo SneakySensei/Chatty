@@ -4,9 +4,8 @@ import android.content.AbstractThreadedSyncAdapter
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.text.Editable
+import android.view.*
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +17,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_chats.*
+import java.util.Date
 
 class ChatsActivity : AppCompatActivity() {
 
@@ -59,10 +59,48 @@ class ChatsActivity : AppCompatActivity() {
                 return MessageViewHolder(inflater.inflate(R.layout.chat_item, parent, false))
             }
 
-            override fun onBindViewHolder(p0: MessageViewHolder, p1: Int, p2: ChattyMessage) {
+            override fun onBindViewHolder(viewholder: MessageViewHolder, position: Int, chattyMessage: ChattyMessage) {
+                viewholder.nameTextView.text = chattyMessage.name
+                viewholder.messageTextView.text = chattyMessage.message
+                viewholder.timeTextView.text = Date(chattyMessage.time).toString()
+
 
             }
         }
+
+        recyclerView.adapter = mFirebaseAdapter
+        button2.setOnClickListener {
+            val chattyMessage = ChattyMessage(
+                message = editText4.text.toString(),
+                name = mAuth.currentUser?.displayName!!,
+                time = Date().time
+            )
+            mDatabaseReference.child("messages").push().setValue(chattyMessage)
+            editText4.setText("")
+        }
+        button4.setOnClickListener {
+            logout()
+        }
+    }
+
+
+
+    fun logout(){
+        mAuth.signOut()
+        val intent = Intent(this,AuthActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+
+    public override fun onStart(){
+        super.onStart()
+        mFirebaseAdapter.startListening()
+    }
+
+    public override fun onPause() {
+        super.onPause()
+        mFirebaseAdapter.stopListening()
     }
 
     data class ChattyMessage(var id:String? = null, var name:String, var message: String, var time: Long){

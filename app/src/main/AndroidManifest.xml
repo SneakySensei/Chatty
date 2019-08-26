@@ -11,9 +11,9 @@
             android:roundIcon="@mipmap/ic_launcher_chatty_v2_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".ChatsActivity">
+        <activity android:name=".ChatsActivity" android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".AuthActivity">
+        <activity android:name=".AuthActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -8,6 +8,7 @@ import androidx.annotation.NonNull
 import com.google.android.gms.tasks.OnCompleteListener
 import android.R.attr.password
 import android.content.Intent                               //@NOTE IMPORT NEEDED FOR USING INTENTS
+import android.graphics.Color
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
@@ -60,15 +61,25 @@ class AuthActivity : AppCompatActivity() {
 
     fun showLogin(){
         editText3.visibility = View.GONE
-        imageView4.visibility = View.GONE
+
         button.text = getString(R.string.auth_button_login)
         textView2.text = "Don't have an account? Sign Up"
         textView.text = "Login to Chatty!"
         button.setOnClickListener {
             val email = editText.text.toString()
             val password = editText2.text.toString()
-            viewmodel.logIn(email,password)
+            if(email.isEmpty()) {
+                editText.hint = "*Email required"
+                editText.setHintTextColor(Color.rgb(200,60,60))
+            }
+            if(password.isEmpty()) {
+                editText2.hint = "*Password required"
+                editText2.setHintTextColor(Color.rgb(200,60,60))
+            }
+            if(email.isNotEmpty() && password.isNotEmpty())
+                viewmodel.logIn(email,password)
         }
+
 
         textView2.setOnClickListener{
             viewmodel.authmethod.postValue(AuthMethod.SIGNUP)
@@ -77,7 +88,7 @@ class AuthActivity : AppCompatActivity() {
 
     fun showSignup(){
         editText3.visibility = View.VISIBLE
-        imageView4.visibility = View.VISIBLE
+
         button.text = getString(R.string.auth_button_sign_up)
         textView2.text = "Already have an account? Login Instead"
         textView.text = "Sign Up to Chatty!"
@@ -85,7 +96,20 @@ class AuthActivity : AppCompatActivity() {
             val name = editText3.text.toString()
             val email = editText.text.toString()
             val password = editText2.text.toString()
-            viewmodel.signUp(name, email, password)
+            if(name.isEmpty()) {
+                editText3.hint = "*Name required"
+                editText3.setHintTextColor(Color.rgb(200,100,100))
+            }
+            if(email.isEmpty()) {
+                editText.hint = "*Email required"
+                editText.setHintTextColor(Color.rgb(200,100,100))
+            }
+            if(password.isEmpty()) {
+                editText2.hint = "*Password required"
+                editText2.setHintTextColor(Color.rgb(200,100,100))
+            }
+            if(email.isNotEmpty() && name.isNotEmpty() && password.isNotEmpty())
+                viewmodel.signUp(name, email, password)
         }
 
         textView2.setOnClickListener{
