@@ -41,6 +41,9 @@ class ChatsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chats)
         mAuth = FirebaseAuth.getInstance()
+        mAuth.addAuthStateListener {
+            this.title = it.currentUser?.displayName ?: getString(R.string.app_name)
+        }
         val mLinearLayoutManager = LinearLayoutManager(this)
         mLinearLayoutManager.stackFromEnd = true
         recyclerView.layoutManager = mLinearLayoutManager
